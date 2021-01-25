@@ -9,44 +9,30 @@ print('The shift number must be between 1 and 20.\n')
 
 # User prompts
 purpose = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-text = input("Text to encrypt:\n").lower()
+text = input(f"Text to {purpose}:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-# Text Encryption
+# The encryption and decryption process
 
 
-def encrypt(initial_text, shift_num):
-    encoding = ""
+def cipher(initial_text, shift_num, cipher_purpose):
+    cipher_text = ""
+    if cipher_purpose == "decode":
+        shift_num *= -1
     for letter in initial_text:
         position = alphabets.index(letter)
         new_position = position + shift_num
-        new_letter = alphabets[new_position]
-        encoding += new_letter
-    print(f'The encoded text is: {encoding}')
-
-# Text Decryption
+        cipher_text += alphabets[new_position]
+    print(f"Here's the {purpose}d result: {cipher_text}")
 
 
-def decrypt(encrypt_text, shift_num):
-    initial_text = ""
-    for letter in encrypt_text:
-        position = alphabets.index(letter)
-        old_position = position - shift_num
-        initial_text += alphabets[old_position]
-    print(f"The decoded text is {initial_text}")
-
-
-if purpose == 'encode':
+# Validating user inputs
+if (purpose == 'encode') or (purpose == 'decode'):
     # Prevent IndexError
     if (shift < 1) or (shift > 20):
         print('Invalid shift number')
     else:
-        encrypt(initial_text=text, shift_num=shift)
-elif purpose == 'decode':
-    # Prevent IndexError
-    if (shift < 1) or (shift > 20):
-        print('Invalid shift number')
-    else:
-        decrypt(encrypt_text=text, shift_num=shift)
+        cipher(initial_text=text, shift_num=shift, cipher_purpose=purpose)
 else:
     print('Invalid response. Encode or Decode')
+
