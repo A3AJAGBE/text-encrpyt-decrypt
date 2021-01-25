@@ -45,10 +45,11 @@ while cipher_continue:
 
     restart = input("\nType 'yes' to restart or 'no' to close the program.\n").lower()
     if restart == "yes":
+        print('Restarting the application...')
         cipher_continue = True
     elif restart == "no":
         cipher_continue = False
         print("Thank you for using the application.")
     else:
-        print('Invalid Response, Restarting the application.')
+        print('Invalid Response, Restarting the application...')
         cipher_continue = True
