@@ -1,5 +1,6 @@
 """
-This application encrypts and decrypt messages/text according to the shift key
+This application encrypts and decrypt messages/text according to the shift number.
+The shift number used for encoding must also be used for decoding, otherwise it will not provide a useful information.
 """
 from side import alphabetNumeric, logo
 
